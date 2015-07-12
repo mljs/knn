@@ -1,0 +1,47 @@
+{
+  "name": "ml-knn",
+  "version": "0.0.1",
+  "description": "K-nearest neighboor library",
+  "main": "src/index.js",
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --require should --reporter mocha-better-spec-reporter --recursive",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mljs/knn.git"
+  },
+  "keywords": [
+    "naive",
+    "bayes",
+    "machine",
+    "learning"
+  ],
+  "author": "Jefferson Hern�ndez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mljs/knn/issues"
+  },
+  "homepage": "https://github.com/mljs/knn",
+  "devDependencies": {
+    "browserify": "^8.1.3",
+    "del": "^1.1.1",
+    "gulp": "^3.8.11",
+    "gulp-header": "^1.2.2",
+    "gulp-rename": "^1.2.0",
+    "gulp-sourcemaps": "^1.3.0",
+    "gulp-uglify": "^1.1.0",
+    "mocha": "latest",
+    "mocha-better-spec-reporter": "latest",
+    "should": "latest",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.0.0"
+  },
+  "dependencies": {
+    "ml-distance": "^1.0.2"
+  }
+}
