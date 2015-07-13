@@ -1,6 +1,6 @@
 {
   "name": "ml-knn",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "K-nearest neighboor library",
   "main": "src/index.js",
   "directories": {
@@ -16,12 +16,13 @@
     "url": "https://github.com/mljs/knn.git"
   },
   "keywords": [
-    "naive",
-    "bayes",
+    "nearest",
+    "neighboor",
+    "classifier",
     "machine",
     "learning"
   ],
-  "author": "Jefferson Hern�ndez",
+  "author": "Jefferson Hernandez",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mljs/knn/issues"
