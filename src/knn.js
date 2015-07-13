@@ -5,10 +5,30 @@ module.exports = KNN;
 var KDTree = require('./kdtree').kdTree;
 var Distances = require('ml-distance');
 
+/**
+ * K-Nearest neighboor constructor.
+ *
+ * @param reload - loading purposes.
+ * @param model - loading purposes
+ * @constructor
+ */
 function KNN(reload, model) {
-
+    if(reload) {
+        this.kdtree = model.kdtree;
+        this.k = model.k;
+    }
 }
 
+/**
+ * Function that trains the KNN with the given trainingSet and trainingLabels.
+ * The third argument is an object with the following options.
+ *  * distance: that represent the distance function applied (default: euclidean)
+ *  * k: the number of neighboors to take in count for classify (default: number of features + 1)
+ *
+ * @param trainingSet
+ * @param trainingLabels
+ * @param options
+ */
 KNN.prototype.train = function (trainingSet, trainingLabels, options) {
     if(options === undefined) options = {};
     if(options.distance === undefined) options.distance = Distances.euclidean;
@@ -34,6 +54,12 @@ KNN.prototype.train = function (trainingSet, trainingLabels, options) {
     this.k = options.k;
 };
 
+/**
+ * Function that returns the predictions given the dataset.
+ * 
+ * @param dataset
+ * @returns {Array}
+ */
 KNN.prototype.predict = function (dataset) {
     var predictions = new Array(dataset.length);
     for(var i = 0; i < dataset.length; ++i) {
@@ -43,6 +69,11 @@ KNN.prototype.predict = function (dataset) {
     return predictions;
 };
 
+/**
+ * function that returns a prediction for a single case.
+ * @param currentCase
+ * @returns {number}
+ */
 KNN.prototype.getSinglePrediction = function (currentCase) {
     var nearestPoints = this.kdtree.nearest(currentCase, this.k);
     var pointsPerClass = new Array(this.features);
@@ -64,4 +95,27 @@ KNN.prototype.getSinglePrediction = function (currentCase) {
     }
 
     return predictedClass;
+};
+
+/**
+ * function that returns a KNN classifier with the given model.
+ *
+ * @param model
+ */
+KNN.load = function (model) {
+    if(model.modelName !== "KNN")
+        throw new RangeError("The given model is invalid!");
+
+    return new KNN(true, model);
+};
+
+/**
+ * function that exports the current KNN classifier.
+ */
+KNN.prototype.export = function () {
+    return {
+        modelName: "KNN",
+        kdtree: this.kdtree,
+        k: this.k
+    };
 };
