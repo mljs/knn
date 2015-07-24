@@ -1,4 +1,10 @@
 # K-Nearest neighbor classifier
+
+  [![NPM version][npm-image]][npm-url]
+  [![build status][travis-image]][travis-url]
+  [![David deps][david-image]][david-url]
+  [![npm download][download-image]][download-url]
+
 A General purpose k-nearest neighbor classifier algorithm based on the k-d tree Javascript library develop by Ubilabs:
 
 * [k-d trees](https://github.com/ubilabs/kd-tree-javascript)
@@ -76,3 +82,12 @@ __Arguments__
 ## License
 
 [MIT](./LICENSE)
+
+[npm-image]: https://img.shields.io/npm/v/ml-knn.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/ml-knn
+[travis-image]: https://img.shields.io/travis/mljs/knn/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/mljs/knn
+[david-image]: https://img.shields.io/david/mljs/knn.svg?style=flat-square
+[david-url]: https://david-dm.org/mljs/knn
+[download-image]: https://img.shields.io/npm/dm/ml-knn.svg?style=flat-square
+[download-url]: https://npmjs.org/package/ml-knn
