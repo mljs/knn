@@ -1,6 +1,6 @@
 {
   "name": "ml-knn",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "K-nearest neighboor library",
   "main": "src/index.js",
   "directories": {
@@ -29,20 +29,11 @@
   },
   "homepage": "https://github.com/mljs/knn",
   "devDependencies": {
-    "browserify": "^8.1.3",
-    "del": "^1.1.1",
-    "gulp": "^3.8.11",
-    "gulp-header": "^1.2.2",
-    "gulp-rename": "^1.2.0",
-    "gulp-sourcemaps": "^1.3.0",
-    "gulp-uglify": "^1.1.0",
     "mocha": "latest",
     "mocha-better-spec-reporter": "latest",
-    "should": "latest",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.0.0"
+    "should": "latest"
   },
   "dependencies": {
-    "ml-distance": "^1.0.2"
+    "ml-distance": "^2.0.1"
   }
 }

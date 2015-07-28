@@ -62,6 +62,10 @@ KNN.prototype.train = function (trainingSet, trainingLabels, options) {
         dimensions[i] = i;
     }
 
+    console.log(points);
+    console.log(options.distance);
+    console.log(dimensions);
+
     this.kdtree = new KDTree(points, options.distance, dimensions);
     this.k = options.k;
     this.classes = classes;
