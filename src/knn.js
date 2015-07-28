@@ -32,7 +32,7 @@ function KNN(reload, model) {
  */
 KNN.prototype.train = function (trainingSet, trainingLabels, options) {
     if(options === undefined) options = {};
-    if(options.distance === undefined) options.distance = Distances.euclidean;
+    if(options.distance === undefined) options.distance = Distances.distance.euclidean;
     if(options.k === undefined) options.k = trainingSet[0].length + 1;
 
     var classes = 0;
@@ -61,10 +61,6 @@ KNN.prototype.train = function (trainingSet, trainingLabels, options) {
     for(i = 0; i < dimensions.length; ++i) {
         dimensions[i] = i;
     }
-
-    console.log(points);
-    console.log(options.distance);
-    console.log(dimensions);
 
     this.kdtree = new KDTree(points, options.distance, dimensions);
     this.k = options.k;
