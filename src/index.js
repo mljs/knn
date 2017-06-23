@@ -22,7 +22,6 @@ export default class KNN {
         this.kdTree = new KDTree(points, distance);
         this.k = k;
         this.classes = classes;
-        this.distance = distance;
     }
 
     predict(dataset) {
