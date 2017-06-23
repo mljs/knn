@@ -19,7 +19,9 @@ function Node(obj, dimension, parent) {
     this.dimension = dimension;
 }
 
-function kdTree(points, metric, dimensions) {
+function kdTree(points, metric) {
+
+    var dimensions;
 
     var self = this;
 
@@ -68,8 +70,16 @@ function kdTree(points, metric, dimensions) {
     }
 
     // If points is not an array, assume we're loading a pre-built tree
-    if (!Array.isArray(points)) loadTree(points, metric, dimensions);
-    else this.root = buildTree(points, 0, null);
+    if (!Array.isArray(points)) {
+        dimensions = points.dimensions;
+        loadTree(points, metric);
+    } else {
+        dimensions = new Array(points[0].length);
+        for (var i = 0; i < dimensions.length; ++i) {
+            dimensions[i] = i;
+        }
+        this.root = buildTree(points, 0, null);
+    }
 
     // Convert to a JSON serializable structure; this just requires removing
     // the `parent` property
@@ -78,6 +88,7 @@ function kdTree(points, metric, dimensions) {
         var dest = new Node(src.obj, src.dimension, null);
         if (src.left) dest.left = self.toJSON(src.left);
         if (src.right) dest.right = self.toJSON(src.right);
+        dest.dimensions = dimensions;
         return dest;
     };
 

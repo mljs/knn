@@ -1,10 +1,10 @@
-import {kdTree as KDTree} from './kdtree';
+import {kdTree as kdTree} from './kdTree';
 import euclideanDistance from 'ml-distance-euclidean';
 
 export default class KNN {
-    constructor(reload, model) {
+    constructor(reload, model, distance) {
         if (reload) {
-            this.kdtree = model.kdtree;
+            this.kdTree = new kdTree(model.kdTree, distance || euclideanDistance);
             this.k = model.k;
             this.classes = model.classes;
         }
@@ -26,34 +26,18 @@ export default class KNN {
             k = trainingSet[0].length + 1
         } = options;
 
-        var classes = 0;
-        var exist = new Array(1000);
-        var j = 0;
-        for (var i = 0; i < trainingLabels.length; ++i) {
-            if (exist.indexOf(trainingLabels[i]) === -1) {
-                classes++;
-                exist[j] = trainingLabels[i];
-                j++;
-            }
-        }
+        const classes = new Set(trainingLabels).size;
 
-        // copy dataset
         var points = new Array(trainingSet.length);
-        for (i = 0; i < points.length; ++i) {
+        for (var i = 0; i < points.length; ++i) {
             points[i] = trainingSet[i].slice();
         }
 
-        this.features = trainingSet[0].length;
         for (i = 0; i < trainingLabels.length; ++i) {
             points[i].push(trainingLabels[i]);
         }
 
-        var dimensions = new Array(trainingSet[0].length);
-        for (i = 0; i < dimensions.length; ++i) {
-            dimensions[i] = i;
-        }
-
-        this.kdtree = new KDTree(points, distance, dimensions);
+        this.kdTree = new kdTree(points, distance);
         this.k = k;
         this.classes = classes;
     }
@@ -79,7 +63,7 @@ export default class KNN {
      * @return {number}
      */
     getSinglePrediction(currentCase) {
-        var nearestPoints = this.kdtree.nearest(currentCase, this.k);
+        var nearestPoints = this.kdTree.nearest(currentCase, this.k);
         var pointsPerClass = new Array(this.classes);
         var predictedClass = -1;
         var maxPoints = -1;
@@ -102,10 +86,18 @@ export default class KNN {
     }
 
     toJSON() {
-        throw new Error('toJSON is not implemented');
+        return {
+            name: 'KNN',
+            kdTree: this.kdTree.toJSON(),
+            k: this.k,
+            classes: this.classes
+        };
     }
 
-    static load() {
-        throw new Error('KNN.load is not implemented');
+    static load(model, distance) {
+        if (model.name !== 'KNN') {
+            throw new RangeError('not a KNN model: ' + model.name);
+        }
+        return new KNN(true, model, distance);
     }
 }

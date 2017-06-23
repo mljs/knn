@@ -16,11 +16,10 @@ describe('knn', () => {
         expect(result[1]).toBe(0);
     });
 
-    it.skip('export and import options', () => {
+    it('export and import options', () => {
         const model = JSON.parse(JSON.stringify(knn));
 
         const newKNN = KNN.load(model);
-
         const result = newKNN.predict([[1.81, 1.81, 1.81], [0.5, 0.5, 0.5]]);
 
         expect(result[0]).toBe(1);
