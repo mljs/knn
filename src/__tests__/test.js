@@ -4,8 +4,7 @@ describe('knn', () => {
     const cases = [[0, 0, 0], [0, 1, 1], [1, 1, 0], [2, 2, 2], [1, 2, 2], [2, 1, 2]];
     const labels = [0, 0, 0, 1, 1, 1];
 
-    const knn = new KNN();
-    knn.train(cases, labels, {
+    const knn = new KNN(cases, labels, {
         k: 3
     });
 
