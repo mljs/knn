@@ -3,14 +3,6 @@ import euclideanDistance from 'ml-distance-euclidean';
 
 export default class KNN {
     constructor(dataset, labels, options) {
-        if (dataset === true) {
-            const model = labels;
-            const distance = options;
-            this.kdTree = new KDTree(model.kdTree, distance);
-            this.k = model.k;
-            this.classes = model.classes;
-            this.distance = distance;
-        } else {
             const {
                 distance = euclideanDistance,
                 k = dataset[0].length + 1
@@ -31,7 +23,6 @@ export default class KNN {
             this.k = k;
             this.classes = classes;
             this.distance = distance;
-        }
     }
 
     predict(dataset) {
@@ -64,27 +55,5 @@ export default class KNN {
         }
 
         return predictedClass;
-    }
-
-    toJSON() {
-        return {
-            name: 'KNN',
-            kdTree: this.kdTree.toJSON(),
-            k: this.k,
-            classes: this.classes,
-            distance: this.distance === euclideanDistance ? 'euclidean' : 'other'
-        };
-    }
-
-    static load(model, distance) {
-        if (model.name !== 'KNN') {
-            throw new RangeError('not a KNN dataset: ' + model.name);
-        }
-        if (model.distance === 'euclidean') {
-            distance = euclideanDistance;
-        } else if (!distance) {
-            throw new TypeError('missing custom distance function');
-        }
-        return new KNN(true, model, distance);
     }
 }
