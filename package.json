@@ -1,19 +1,23 @@
 {
   "name": "ml-knn",
-  "version": "1.0.0",
-  "description": "K-nearest neighboor library",
-  "main": "src/index.js",
-  "directories": {
-    "lib": "src",
-    "test": "test"
-  },
+  "version": "0.0.0",
+  "description": "k-nearest neighbors algorithm",
+  "main": "lib/index.js",
+  "module": "src/index.js",
+  "files": [
+    "lib",
+    "src"
+  ],
   "scripts": {
-    "test": "mocha --require should --reporter mocha-better-spec-reporter --recursive",
-    "build": "gulp build"
+    "eslint": "eslint src",
+    "eslint-fix": "npm run eslint -- --fix",
+    "prepublish": "rollup -c",
+    "test": "run-s testonly eslint",
+    "testonly": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mljs/knn.git"
+    "url": "git+https://github.com/mljs/knn.git"
   },
   "keywords": [
     "nearest",
@@ -27,13 +31,20 @@
   "bugs": {
     "url": "https://github.com/mljs/knn/issues"
   },
-  "homepage": "https://github.com/mljs/knn",
+  "homepage": "https://github.com/mljs/knn#readme",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "devDependencies": {
-    "mocha": "latest",
-    "mocha-better-spec-reporter": "latest",
-    "should": "latest"
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "eslint": "^4.0.0",
+    "eslint-config-cheminfo": "^1.8.0",
+    "eslint-plugin-no-only-tests": "^2.0.0",
+    "jest": "^20.0.4",
+    "npm-run-all": "^4.0.2",
+    "rollup": "^0.43.0"
   },
   "dependencies": {
-    "ml-distance": "^2.0.1"
+    "ml-distance-euclidean": "^1.0.0"
   }
 }
