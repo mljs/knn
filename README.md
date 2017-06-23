@@ -14,48 +14,36 @@ A General purpose k-nearest neighbor classifier algorithm based on the k-d tree 
 
 ## API
 
-### new KNN()
+### new KNN(dataset, labels[, options])
 
-Constructor that takes no arguments.
-
-__Example__
-
-```js
-var knn = new KNN();
-```
-
-### train(trainingSet, predictions)
-
-Train the KNN model with the given training set, predictions, and some options.
+Instantiates the KNN algorithm.
 
 __Arguments__
 
-* `trainingSet` - A matrix of the training set.
-* `trainingLabels` - An array of value for each case in the training set.
-* `options` - Object with the options for the training.
+* `dataset` - A matrix (2D array) of the dataset.
+* `labels` - An array of labels (one for each sample in the dataset).
+* `options` - Object with the options for the algorithm.
 
 __Options__
 
-* `k` - number of nearest neighbor (Default, number of label + 1).
-* `distance` - distance function for the algorithm, the argument is a function, not an String
-                (by default is euclidean, you can use the functions of this repository [distance](https://github.com/mljs/distance)).
+* `k` - number of nearest neighbors (Default: number of labels + 1).
+* `distance` - distance function for the algorithm (Default: euclidean distance).
 
 __Example__
 
 ```js
-var trainingSet = [[0, 0, 0], [0, 1, 1], [1, 1, 0], [2, 2, 2], [1, 2, 2], [2, 1, 2]];
+var dataset = [[0, 0, 0], [0, 1, 1], [1, 1, 0], [2, 2, 2], [1, 2, 2], [2, 1, 2]];
 var predictions = [0, 0, 0, 1, 1, 1];
-
-knn.train(trainingSet, predictions);
+var knn = new KNN(dataset, predictions);
 ```
 
-### predict(dataset)
+### predict(newDataset)
 
 Predict the values of the dataset.
 
 __Arguments__
 
-* `dataset` - A matrix that contains the dataset.
+* `newDataset` - A matrix that contains the dataset.
 
 __Example__
 
