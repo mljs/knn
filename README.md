@@ -14,9 +14,9 @@ A General purpose k-nearest neighbor classifier algorithm based on the k-d tree 
 
 ## API
 
-### new KNN(dataset, predictions[, options])
+### new KNN(dataset, labels[, options])
 
-Instantiates the KNN algorithm with the given dataset, predictions and options.
+Instantiates the KNN algorithm.
 
 __Arguments__
 
@@ -37,13 +37,13 @@ var predictions = [0, 0, 0, 1, 1, 1];
 var knn = new KNN(dataset, predictions);
 ```
 
-### predict(dataset)
+### predict(newDataset)
 
 Predict the values of the dataset.
 
 __Arguments__
 
-* `dataset` - A matrix that contains the dataset.
+* `newDataset` - A matrix that contains the dataset.
 
 __Example__
 
