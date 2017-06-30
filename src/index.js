@@ -25,34 +25,40 @@ export default class KNN {
     }
 
     predict(dataset) {
-        var predictions = new Array(dataset.length);
-        for (var i = 0; i < dataset.length; ++i) {
-            predictions[i] = this.getSinglePrediction(dataset[i]);
-        }
-
-        return predictions;
-    }
-
-    getSinglePrediction(currentCase) {
-        var nearestPoints = this.kdTree.nearest(currentCase, this.k);
-        var pointsPerClass = new Array(this.classes);
-        var predictedClass = -1;
-        var maxPoints = -1;
-        var lastElement = nearestPoints[0][0].length - 1;
-
-        for (var i = 0; i < pointsPerClass.length; ++i) {
-            pointsPerClass[i] = 0;
-        }
-
-        for (i = 0; i < nearestPoints.length; ++i) {
-            var currentClass = nearestPoints[i][0][lastElement];
-            var currentPoints = ++pointsPerClass[currentClass];
-            if (currentPoints > maxPoints) {
-                predictedClass = currentClass;
-                maxPoints = currentPoints;
+        if (Array.isArray(dataset)) {
+            if (typeof dataset[0] === 'number') {
+                return getSinglePrediction(this, dataset);
+            } else if (Array.isArray(dataset[0]) && typeof dataset[0][0] === 'number') {
+                const predictions = new Array(dataset.length);
+                for (var i = 0; i < dataset.length; i++) {
+                    predictions[i] = getSinglePrediction(this, dataset[i]);
+                }
+                return predictions;
             }
         }
-
-        return predictedClass;
+        throw new TypeError('dataset to predict must be an array or a matrix');
     }
+}
+
+function getSinglePrediction(knn, currentCase) {
+    var nearestPoints = knn.kdTree.nearest(currentCase, knn.k);
+    var pointsPerClass = new Array(knn.classes);
+    var predictedClass = -1;
+    var maxPoints = -1;
+    var lastElement = nearestPoints[0][0].length - 1;
+
+    for (var i = 0; i < pointsPerClass.length; ++i) {
+        pointsPerClass[i] = 0;
+    }
+
+    for (i = 0; i < nearestPoints.length; ++i) {
+        var currentClass = nearestPoints[i][0][lastElement];
+        var currentPoints = ++pointsPerClass[currentClass];
+        if (currentPoints > maxPoints) {
+            predictedClass = currentClass;
+            maxPoints = currentPoints;
+        }
+    }
+
+    return predictedClass;
 }
