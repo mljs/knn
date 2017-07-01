@@ -54,6 +54,11 @@ var dataset = [[0, 0, 0],
 var ans = knn.predict(dataset);
 ```
 
+## External links
+
+Check this cool blog post for a detailed example:
+https://hackernoon.com/machine-learning-with-javascript-part-2-da994c17d483
+
 ## License
 
   [MIT](./LICENSE)
