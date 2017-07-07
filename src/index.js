@@ -2,7 +2,7 @@ import {kdTree as KDTree} from './kdTree';
 import euclideanDistance from 'ml-distance-euclidean';
 
 export default class KNN {
-    constructor(dataset, labels, options) {
+    constructor(dataset, labels, options = {}) {
         const {
             distance = euclideanDistance,
             k = dataset[0].length + 1
