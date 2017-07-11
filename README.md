@@ -54,6 +54,15 @@ var dataset = [[0, 0, 0],
 var ans = knn.predict(dataset);
 ```
 
+### toJSON()
+
+Returns an object representing the model. This function is automatically called if `JSON.stringify(knn)` is used.  
+Be aware that the serialized model takes about 1.3 times the size of the input dataset (it actually is the dataset in a tree structure). Stringification can fail if the resulting string is too large.
+
+### KNN.load(model[, distance])
+
+Loads a model previously exported by `knn.toJSON()`. If a custom distance function was provided, it must be passed again.
+
 ## External links
 
 Check this cool blog post for a detailed example:
