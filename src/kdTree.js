@@ -83,12 +83,14 @@ function kdTree(points, metric) {
 
     // Convert to a JSON serializable structure; this just requires removing
     // the `parent` property
-    this.toJSON = function (src) {
+    this.toJSON = function (src, isRoot = true) {
         if (!src) src = this.root;
         var dest = new Node(src.obj, src.dimension, null);
-        if (src.left) dest.left = self.toJSON(src.left);
-        if (src.right) dest.right = self.toJSON(src.right);
-        dest.dimensions = dimensions;
+        if (src.left) dest.left = self.toJSON(src.left, false);
+        if (src.right) dest.right = self.toJSON(src.right, false);
+        if (isRoot) {
+            dest.dimensions = dimensions;
+        }
         return dest;
     };
 
