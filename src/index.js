@@ -1,4 +1,4 @@
-import {kdTree as KDTree} from './kdTree';
+import KDTree from './KDTree';
 import euclideanDistance from 'ml-distance-euclidean';
 
 export default class KNN {
@@ -49,7 +49,7 @@ export default class KNN {
     toJSON() {
         return {
             name: 'KNN',
-            kdTree: this.kdTree.toJSON(),
+            kdTree: this.kdTree,
             k: this.k,
             classes: this.classes,
             isEuclidean: this.isEuclidean
