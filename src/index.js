@@ -2,6 +2,14 @@ import KDTree from './KDTree';
 import euclideanDistance from 'ml-distance-euclidean';
 
 export default class KNN {
+
+    /**
+     * @param {Array} dataset
+     * @param {Array} labels
+     * @param {object} options
+     * @param {number} [options.k=numberOfClasses + 1] - Number of neighbors to classify.
+     * @param {function} [options.distance=euclideanDistance] - Distance function that takes two parameters.
+     */
     constructor(dataset, labels, options = {}) {
         if (dataset === true) {
             const model = labels;
@@ -11,12 +19,13 @@ export default class KNN {
             this.isEuclidean = model.isEuclidean;
             return;
         }
-        const {
-            distance = euclideanDistance,
-            k = dataset[0].length + 1
-        } = options;
 
         const classes = new Set(labels).size;
+
+        const {
+            distance = euclideanDistance,
+            k = classes + 1
+        } = options;
 
         const points = new Array(dataset.length);
         for (var i = 0; i < points.length; ++i) {
@@ -33,6 +42,12 @@ export default class KNN {
         this.isEuclidean = distance === euclideanDistance;
     }
 
+    /**
+     * Create a new KNN instance with the given model.
+     * @param {object} model
+     * @param {function} distance=euclideanDistance - distance function must be provided if the model wasn't trained with euclidean distance.
+     * @return {KNN}
+     */
     static load(model, distance = euclideanDistance) {
         if (model.name !== 'KNN') {
             throw new Error('invalid model: ' + model.name);
@@ -46,6 +61,10 @@ export default class KNN {
         return new KNN(true, model, distance);
     }
 
+    /**
+     * Return a JSON containing the kd-tree model.
+     * @return {object} JSON KNN model.
+     */
     toJSON() {
         return {
             name: 'KNN',
@@ -56,6 +75,11 @@ export default class KNN {
         };
     }
 
+    /**
+     * Predicts the output given the matrix to predict.
+     * @param {Array} dataset
+     * @return {Array} predictions
+     */
     predict(dataset) {
         if (Array.isArray(dataset)) {
             if (typeof dataset[0] === 'number') {
