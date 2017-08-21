@@ -2,6 +2,7 @@ import KDTree from './KDTree';
 import euclideanDistance from 'ml-distance-euclidean';
 
 export default class KNN {
+
     constructor(dataset, labels, options = {}) {
         if (dataset === true) {
             const model = labels;
@@ -11,12 +12,13 @@ export default class KNN {
             this.isEuclidean = model.isEuclidean;
             return;
         }
-        const {
-            distance = euclideanDistance,
-            k = dataset[0].length + 1
-        } = options;
 
         const classes = new Set(labels).size;
+
+        const {
+            distance = euclideanDistance,
+            k = classes + 1
+        } = options;
 
         const points = new Array(dataset.length);
         for (var i = 0; i < points.length; ++i) {
