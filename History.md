@@ -1,3 +1,13 @@
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/mljs/knn/compare/v2.1.0...v2.1.1) (2017-08-21)
+
+
+### Bug Fixes
+
+* change default k to the number of classes + 1 ([d493043](https://github.com/mljs/knn/commit/d493043))
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/mljs/knn/compare/v2.0.1...v2.1.0) (2017-07-11)
 
