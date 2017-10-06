@@ -15,12 +15,12 @@ export default class KNN {
             const model = labels;
             this.kdTree = new KDTree(model.kdTree, options);
             this.k = model.k;
-            this.classes = model.classes;
+            this.classes = new Set(model.classes);
             this.isEuclidean = model.isEuclidean;
             return;
         }
 
-        const classes = new Set(labels).size;
+        const classes = new Set(labels);
 
         const {
             distance = euclideanDistance,
@@ -70,7 +70,7 @@ export default class KNN {
             name: 'KNN',
             kdTree: this.kdTree,
             k: this.k,
-            classes: this.classes,
+            classes: Array.from(this.classes),
             isEuclidean: this.isEuclidean
         };
     }
@@ -98,16 +98,17 @@ export default class KNN {
 
 function getSinglePrediction(knn, currentCase) {
     var nearestPoints = knn.kdTree.nearest(currentCase, knn.k);
-    var pointsPerClass = new Array(knn.classes);
+    //var pointsPerClass = new Array(knn.classes);
+    var pointsPerClass = {};
     var predictedClass = -1;
     var maxPoints = -1;
     var lastElement = nearestPoints[0][0].length - 1;
 
-    for (var i = 0; i < pointsPerClass.length; ++i) {
-        pointsPerClass[i] = 0;
+    for (var element of knn.classes) {
+        pointsPerClass[element] = 0;
     }
 
-    for (i = 0; i < nearestPoints.length; ++i) {
+    for (var i = 0; i < nearestPoints.length; ++i) {
         var currentClass = nearestPoints[i][0][lastElement];
         var currentPoints = ++pointsPerClass[currentClass];
         if (currentPoints > maxPoints) {
