@@ -1,3 +1,13 @@
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/mljs/knn/compare/v2.1.1...v2.1.2) (2017-10-09)
+
+
+### Bug Fixes
+
+* allow strings and non-consecutive numbers labels for classification ([574cac2](https://github.com/mljs/knn/commit/574cac2))
+
+
+
 <a name="2.1.1"></a>
 ## [2.1.1](https://github.com/mljs/knn/compare/v2.1.0...v2.1.1) (2017-08-21)
 
