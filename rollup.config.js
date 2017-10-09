@@ -1,5 +1,7 @@
 export default {
-    entry: 'src/index.js',
-    format: 'cjs',
-    dest: 'lib/index.js'
+    input: 'src/index.js',
+    output: {
+        format: 'cjs',
+        file: 'lib/index.js'
+    }
 };

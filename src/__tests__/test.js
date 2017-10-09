@@ -1,4 +1,5 @@
 import KNN from '..';
+import iris from 'ml-dataset-iris';
 
 describe('knn', () => {
     const cases = [[0, 0, 0], [0, 1, 1], [1, 1, 0], [2, 2, 2], [1, 2, 2], [2, 1, 2]];
@@ -41,5 +42,50 @@ describe('knn', () => {
         expect(() => KNN.load({})).toThrow('invalid model: undefined');
         expect(() => KNN.load({name: 'KNN', isEuclidean: true}, () => 1)).toThrow('the model was created with the default distance function. Do not load it with another one');
         expect(() => KNN.load({name: 'KNN', isEuclidean: false})).toThrow('a custom distance function was used to create the model. Please provide it again');
+    });
+
+    it('Test with iris dataset', () => {
+        var data = iris.getNumbers();
+        var labels = iris.getClasses();
+
+        var knn = new KNN(data, labels, {k: 5});
+        var test = [
+            [5.1, 3.5, 1.4, 0.2],
+            [4.9, 3.0, 1.4, 0.2],
+            [4.7, 3.2, 1.3, 0.2],
+            [4.6, 3.1, 1.5, 0.2],
+            [5.0, 3.6, 1.4, 0.2],
+            [6.1, 2.8, 4.7, 1.2],
+            [6.4, 2.9, 4.3, 1.3],
+            [6.6, 3.0, 4.4, 1.4],
+            [6.8, 2.8, 4.8, 1.4],
+            [6.7, 3.0, 5.0, 1.7],
+            [6.8, 3.2, 5.9, 2.3],
+            [6.7, 3.3, 5.7, 2.5],
+            [6.7, 3.0, 5.2, 2.3],
+            [6.3, 2.5, 5.0, 1.9],
+            [6.5, 3.0, 5.2, 2.0]
+        ];
+
+        knn = KNN.load(JSON.parse(JSON.stringify(knn)));
+        var expected = [
+            'setosa',
+            'setosa',
+            'setosa',
+            'setosa',
+            'setosa',
+            'versicolor',
+            'versicolor',
+            'versicolor',
+            'versicolor',
+            'versicolor',
+            'virginica',
+            'virginica',
+            'virginica',
+            'virginica',
+            'virginica'
+        ];
+
+        expect(knn.predict(test)).toEqual(expected);
     });
 });
