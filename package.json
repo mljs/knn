@@ -43,7 +43,7 @@
     "jest": "^20.0.4",
     "ml-dataset-iris": "^1.0.0",
     "npm-run-all": "^4.0.2",
-    "rollup": "^0.43.0"
+    "rollup": "^0.50.0"
   },
   "dependencies": {
     "ml-distance-euclidean": "^1.0.0"

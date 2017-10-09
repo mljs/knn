@@ -98,7 +98,6 @@ export default class KNN {
 
 function getSinglePrediction(knn, currentCase) {
     var nearestPoints = knn.kdTree.nearest(currentCase, knn.k);
-    //var pointsPerClass = new Array(knn.classes);
     var pointsPerClass = {};
     var predictedClass = -1;
     var maxPoints = -1;
