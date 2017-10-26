@@ -24,7 +24,7 @@ export default class KNN {
 
         const {
             distance = euclideanDistance,
-            k = classes + 1
+            k = classes.size + 1
         } = options;
 
         const points = new Array(dataset.length);

@@ -88,4 +88,15 @@ describe('knn', () => {
 
         expect(knn.predict(test)).toEqual(expected);
     });
+
+    it('default k', () => {
+        const dataset = [[0, 0, 0], [0, 1, 1], [1, 1, 0], [2, 2, 2], [1, 2, 2], [2, 1, 2]];
+        const predictions = [0, 0, 0, 1, 1, 1];
+        const knn = new KNN(dataset, predictions);
+
+        expect(knn.k).toBe(3);
+
+        var ans = knn.predict([[0, 0, 0]]);
+        expect(ans).toEqual([0]);
+    });
 });
