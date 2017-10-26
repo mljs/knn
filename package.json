@@ -1,6 +1,6 @@
 {
   "name": "ml-knn",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "k-nearest neighbors algorithm",
   "main": "lib/index.js",
   "module": "src/index.js",

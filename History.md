@@ -1,3 +1,13 @@
+<a name="2.1.3"></a>
+## [2.1.3](https://github.com/mljs/knn/compare/v2.1.2...v2.1.3) (2017-10-26)
+
+
+### Bug Fixes
+
+* compute default k correctly ([c69b522](https://github.com/mljs/knn/commit/c69b522))
+
+
+
 <a name="2.1.2"></a>
 ## [2.1.2](https://github.com/mljs/knn/compare/v2.1.1...v2.1.2) (2017-10-09)
 
