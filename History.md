@@ -1,3 +1,17 @@
+# [3.0.0](https://github.com/mljs/knn/compare/v2.1.3...v3.0.0) (2019-06-29)
+
+
+### chore
+
+* update dependencies and remove support for Node.js 6 ([8727324](https://github.com/mljs/knn/commit/8727324))
+
+
+### BREAKING CHANGES
+
+* Node.js 6 is no longer supported.
+
+
+
 <a name="2.1.3"></a>
 ## [2.1.3](https://github.com/mljs/knn/compare/v2.1.2...v2.1.3) (2017-10-26)
 
