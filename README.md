@@ -1,16 +1,16 @@
 # knn
 
-  [![NPM version][npm-image]][npm-url]
-  [![build status][travis-image]][travis-url]
-  [![npm download][download-image]][download-url]
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+[![npm download][download-image]][download-url]
 
 A General purpose k-nearest neighbor classifier algorithm based on the k-d tree Javascript library develop by Ubilabs:
 
-* [k-d trees](https://github.com/ubilabs/kd-tree-javascript)
+- [k-d trees](https://github.com/ubilabs/kd-tree-javascript)
 
 ## Installation
 
-`$ npm install --save ml-knn`
+`$ npm i ml-knn`
 
 ## API
 
@@ -18,21 +18,28 @@ A General purpose k-nearest neighbor classifier algorithm based on the k-d tree 
 
 Instantiates the KNN algorithm.
 
-__Arguments__
+**Arguments**:
 
-* `dataset` - A matrix (2D array) of the dataset.
-* `labels` - An array of labels (one for each sample in the dataset).
-* `options` - Object with the options for the algorithm.
+- `dataset` - A matrix (2D array) of the dataset.
+- `labels` - An array of labels (one for each sample in the dataset).
+- `options` - Object with the options for the algorithm.
 
-__Options__
+**Options**:
 
-* `k` - number of nearest neighbors (Default: number of labels + 1).
-* `distance` - distance function for the algorithm (Default: euclidean distance).
+- `k` - number of nearest neighbors (Default: number of labels + 1).
+- `distance` - distance function for the algorithm (Default: euclidean distance).
 
-__Example__
+**Example**:
 
 ```js
-var dataset = [[0, 0, 0], [0, 1, 1], [1, 1, 0], [2, 2, 2], [1, 2, 2], [2, 1, 2]];
+var dataset = [
+  [0, 0, 0],
+  [0, 1, 1],
+  [1, 1, 0],
+  [2, 2, 2],
+  [1, 2, 2],
+  [2, 1, 2]
+];
 var predictions = [0, 0, 0, 1, 1, 1];
 var knn = new KNN(dataset, predictions);
 ```
@@ -41,15 +48,14 @@ var knn = new KNN(dataset, predictions);
 
 Predict the values of the dataset.
 
-__Arguments__
+**Arguments**:
 
-* `newDataset` - A matrix that contains the dataset.
+- `newDataset` - A matrix that contains the dataset.
 
-__Example__
+**Example**:
 
 ```js
-var dataset = [[0, 0, 0],
-               [2, 2, 2]];
+var dataset = [[0, 0, 0], [2, 2, 2]];
 
 var ans = knn.predict(dataset);
 ```
@@ -70,7 +76,7 @@ https://hackernoon.com/machine-learning-with-javascript-part-2-da994c17d483
 
 ## License
 
-  [MIT](./LICENSE)
+[MIT](./LICENSE)
 
 [npm-image]: https://img.shields.io/npm/v/ml-knn.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/ml-knn

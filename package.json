@@ -9,11 +9,13 @@
     "src"
   ],
   "scripts": {
+    "compile": "rollup -c",
     "eslint": "eslint src",
     "eslint-fix": "npm run eslint -- --fix",
-    "prepublish": "rollup -c",
-    "test": "run-s testonly eslint",
-    "testonly": "jest"
+    "prepublishOnly": "npm run compile",
+    "test": "npm run test-coverage && npm run eslint",
+    "test-only": "jest",
+    "test-coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -36,16 +38,16 @@
     "testEnvironment": "node"
   },
   "devDependencies": {
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
-    "eslint": "^4.0.0",
-    "eslint-config-cheminfo": "^1.8.0",
-    "eslint-plugin-no-only-tests": "^2.0.0",
-    "jest": "^21.2.1",
+    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
+    "eslint": "^6.0.1",
+    "eslint-config-cheminfo": "^1.20.1",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jest": "^22.7.1",
+    "jest": "^24.8.0",
     "ml-dataset-iris": "^1.0.0",
-    "npm-run-all": "^4.0.2",
-    "rollup": "^0.50.0"
+    "rollup": "^1.16.3"
   },
   "dependencies": {
-    "ml-distance-euclidean": "^1.0.0"
+    "ml-distance-euclidean": "^2.0.0"
   }
 }
