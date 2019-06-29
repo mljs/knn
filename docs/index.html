@@ -1,20 +1,21 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset='utf-8' />
-  <title>ml-knn 2.1.3 | Documentation</title>
+  <meta charset='utf-8'>
+  <title>ml-knn 3.0.0 | Documentation</title>
+  <meta name='description' content='k-nearest neighbors algorithm'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
-  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
-  <link href='assets/style.css' type='text/css' rel='stylesheet' />
-  <link href='assets/github.css' type='text/css' rel='stylesheet' />
-  <link href='assets/split.css' type='text/css' rel='stylesheet' />
+  <link href='assets/bass.css' rel='stylesheet'>
+  <link href='assets/style.css' rel='stylesheet'>
+  <link href='assets/github.css' rel='stylesheet'>
+  <link href='assets/split.css' rel='stylesheet'>
 </head>
 <body class='documentation m0'>
     <div class='flex'>
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>ml-knn</h3>
-          <div class='mb1'><code>2.1.3</code></div>
+          <div class='mb1'><code>3.0.0</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -66,14 +67,14 @@
             </ul>
           </div>
           <div class='mt1 h6 quiet'>
-            <a href='http://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+            <a href='https://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
           </div>
         </div>
       </div>
       <div id='split-right' class='relative overflow-auto height-viewport-100'>
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -83,7 +84,7 @@
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/knn/blob/4fa0c9972e6b1db45f5f64cf7a8b3723b1395d34/src/index.js#L13-L43'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/knn/blob/7ce13fc15898d246ac66c57ea4ed852d4d3ae4f2/src/index.js#L13-L40'>
       <span>src/index.js</span>
       </a>
     
@@ -91,8 +92,7 @@
   
 
   
-
-  <div class='pre p1 fill-light mt0'>constructor(dataset: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>, labels: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>, options: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
+    <div class='pre p1 fill-light mt0'>constructor(dataset: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>, labels: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</div>
   
   
 
@@ -109,7 +109,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>dataset</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</code>
+            <span class='code bold'>dataset</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</code>
 	    
           </div>
           
@@ -117,7 +117,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>labels</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</code>
+            <span class='code bold'>labels</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</code>
 	    
           </div>
           
@@ -125,7 +125,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>
             = <code>{}</code>)</code>
 	    
           </div>
@@ -144,7 +144,7 @@
             <tbody class='mt1'>
               
                 <tr>
-  <td class='break-word'><span class='code bold'>options.k</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>
+  <td class='break-word'><span class='code bold'>options.k</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>
   
     (default <code>numberOfClasses+1</code>)
   </td>
@@ -155,7 +155,7 @@
 
               
                 <tr>
-  <td class='break-word'><span class='code bold'>options.distance</span> <code class='quiet'><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a></code>
+  <td class='break-word'><span class='code bold'>options.distance</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a></code>
   
     (default <code>euclideanDistance</code>)
   </td>
@@ -186,12 +186,14 @@
   
 
   
+
+  
 </section>
 
           
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -201,7 +203,7 @@
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/knn/blob/4fa0c9972e6b1db45f5f64cf7a8b3723b1395d34/src/index.js#L83-L96'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/knn/blob/7ce13fc15898d246ac66c57ea4ed852d4d3ae4f2/src/index.js#L84-L100'>
       <span>src/index.js</span>
       </a>
     
@@ -210,8 +212,7 @@
 
   <p>Predicts the output given the matrix to predict.</p>
 
-
-  <div class='pre p1 fill-light mt0'>predict(dataset: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
+    <div class='pre p1 fill-light mt0'>predict(dataset: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
   
   
 
@@ -228,7 +229,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>dataset</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</code>
+            <span class='code bold'>dataset</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</code>
 	    
           </div>
           
@@ -242,7 +243,7 @@
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code>:
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></code>:
         predictions
 
       
@@ -258,12 +259,14 @@
   
 
   
+
+  
 </section>
 
           
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -273,7 +276,7 @@
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/knn/blob/4fa0c9972e6b1db45f5f64cf7a8b3723b1395d34/src/index.js#L68-L76'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/knn/blob/7ce13fc15898d246ac66c57ea4ed852d4d3ae4f2/src/index.js#L69-L77'>
       <span>src/index.js</span>
       </a>
     
@@ -282,8 +285,7 @@
 
   <p>Return a JSON containing the kd-tree model.</p>
 
-
-  <div class='pre p1 fill-light mt0'>toJSON(): <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+    <div class='pre p1 fill-light mt0'>toJSON(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
   
   
 
@@ -301,11 +303,13 @@
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
         JSON KNN model.
 
       
     
+  
+
   
 
   
@@ -322,7 +326,7 @@
           
         
           
-            <section class='p2 mb2 clearfix bg-white minishadow'>
+          <section class='p2 mb2 clearfix bg-white minishadow'>
 
   
   <div class='clearfix'>
@@ -332,7 +336,7 @@
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/knn/blob/4fa0c9972e6b1db45f5f64cf7a8b3723b1395d34/src/index.js#L51-L62'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/mljs/knn/blob/7ce13fc15898d246ac66c57ea4ed852d4d3ae4f2/src/index.js#L48-L63'>
       <span>src/index.js</span>
       </a>
     
@@ -341,8 +345,7 @@
 
   <p>Create a new KNN instance with the given model.</p>
 
-
-  <div class='pre p1 fill-light mt0'>load(model: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, distance: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>): KNN</div>
+    <div class='pre p1 fill-light mt0'>load(model: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>, distance: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>): KNN</div>
   
   
 
@@ -359,7 +362,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>model</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
+            <span class='code bold'>model</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a>)</code>
 	    
           </div>
           
@@ -367,7 +370,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>distance</span> <code class='quiet'>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">function</a>
+            <span class='code bold'>distance</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">function</a>
             = <code>euclideanDistance</code>)</code>
 	    =euclideanDistance - distance function must be provided if the model wasn't trained with euclidean distance.
 
@@ -388,6 +391,8 @@
 
       
     
+  
+
   
 
   
