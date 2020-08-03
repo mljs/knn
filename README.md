@@ -32,7 +32,7 @@ Instantiates the KNN algorithm.
 **Example**:
 
 ```js
-var dataset = [
+var train_dataset = [
   [0, 0, 0],
   [0, 1, 1],
   [1, 1, 0],
@@ -40,8 +40,8 @@ var dataset = [
   [1, 2, 2],
   [2, 1, 2]
 ];
-var predictions = [0, 0, 0, 1, 1, 1];
-var knn = new KNN(dataset, predictions);
+var train_labels = [0, 0, 0, 1, 1, 1];
+var knn = new KNN(train_dataset, train__labels);
 ```
 
 ### predict(newDataset)
@@ -55,9 +55,9 @@ Predict the values of the dataset.
 **Example**:
 
 ```js
-var dataset = [[0, 0, 0], [2, 2, 2]];
+var _test_dataset = [[0, 0, 0], [2, 2, 2]];
 
-var ans = knn.predict(dataset);
+var ans = knn.predict(test_dataset);
 ```
 
 ### toJSON()
