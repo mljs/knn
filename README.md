@@ -41,7 +41,8 @@ var train_dataset = [
   [2, 1, 2]
 ];
 var train_labels = [0, 0, 0, 1, 1, 1];
-var knn = new KNN(train_dataset, train__labels);
+var knn = new KNN(train_dataset, train_labels, {k:2}); // consider 2 nearest neighbors for classification
+
 ```
 
 ### predict(newDataset)
