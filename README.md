@@ -41,7 +41,7 @@ var train_dataset = [
   [2, 1, 2]
 ];
 var train_labels = [0, 0, 0, 1, 1, 1];
-var knn = new KNN(train_dataset, train_labels, {k:2}); // consider 2 nearest neighbors for classification
+var knn = new KNN(train_dataset, train_labels, {k:2}); // consider 2 nearest neighbors 
 
 ```
 
@@ -56,7 +56,7 @@ Predict the values of the dataset.
 **Example**:
 
 ```js
-var _test_dataset = [[0, 0, 0], [2, 2, 2]];
+var test_dataset = [[0, 0, 0], [2, 2, 2]];
 
 var ans = knn.predict(test_dataset);
 ```
