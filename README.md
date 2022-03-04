@@ -1,7 +1,6 @@
 # knn
 
 [![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
 [![npm download][download-image]][download-url]
 
 A General purpose k-nearest neighbor classifier algorithm based on the k-d tree Javascript library develop by Ubilabs:
@@ -38,11 +37,10 @@ var train_dataset = [
   [1, 1, 0],
   [2, 2, 2],
   [1, 2, 2],
-  [2, 1, 2]
+  [2, 1, 2],
 ];
 var train_labels = [0, 0, 0, 1, 1, 1];
-var knn = new KNN(train_dataset, train_labels, {k:2}); // consider 2 nearest neighbors 
-
+var knn = new KNN(train_dataset, train_labels, { k: 2 }); // consider 2 nearest neighbors
 ```
 
 ### predict(newDataset)
@@ -61,18 +59,16 @@ var test_dataset = [
   [1.1, 1.1, 1.1],
   [1.1, 1.1, 1.2],
   [1.2, 1.2, 1.2],
-]
+];
 
-var ans = knn.predict(test_dataset)
+var ans = knn.predict(test_dataset);
 
-console.log(ans)
-// classification result: 
+console.log(ans);
+// classification result:
 // ans = [ 0, 0, 1, 1 ]
-// Based on the training data, the first two points of the test dataset are classified as "0" (type 0, perhaps), 
+// Based on the training data, the first two points of the test dataset are classified as "0" (type 0, perhaps),
 // the third and fourth data points are classified as "1".
-
 ```
-
 
 ### toJSON()
 
@@ -94,7 +90,5 @@ https://hackernoon.com/machine-learning-with-javascript-part-2-da994c17d483
 
 [npm-image]: https://img.shields.io/npm/v/ml-knn.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/ml-knn
-[travis-image]: https://img.shields.io/travis/mljs/knn/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/mljs/knn
 [download-image]: https://img.shields.io/npm/dm/ml-knn.svg?style=flat-square
 [download-url]: https://npmjs.org/package/ml-knn

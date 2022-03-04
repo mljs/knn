@@ -25,11 +25,11 @@ export default class KNN {
     const { distance = euclideanDistance, k = classes.size + 1 } = options;
 
     const points = new Array(dataset.length);
-    for (var i = 0; i < points.length; ++i) {
+    for (let i = 0; i < points.length; ++i) {
       points[i] = dataset[i].slice();
     }
 
-    for (i = 0; i < labels.length; ++i) {
+    for (let i = 0; i < labels.length; ++i) {
       points[i].push(labels[i]);
     }
 
@@ -51,12 +51,12 @@ export default class KNN {
     }
     if (!model.isEuclidean && distance === euclideanDistance) {
       throw new Error(
-        'a custom distance function was used to create the model. Please provide it again'
+        'a custom distance function was used to create the model. Please provide it again',
       );
     }
     if (model.isEuclidean && distance !== euclideanDistance) {
       throw new Error(
-        'the model was created with the default distance function. Do not load it with another one'
+        'the model was created with the default distance function. Do not load it with another one',
       );
     }
     return new KNN(true, model, distance);
@@ -72,7 +72,7 @@ export default class KNN {
       kdTree: this.kdTree,
       k: this.k,
       classes: Array.from(this.classes),
-      isEuclidean: this.isEuclidean
+      isEuclidean: this.isEuclidean,
     };
   }
 
@@ -90,7 +90,7 @@ export default class KNN {
         typeof dataset[0][0] === 'number'
       ) {
         const predictions = new Array(dataset.length);
-        for (var i = 0; i < dataset.length; i++) {
+        for (let i = 0; i < dataset.length; i++) {
           predictions[i] = getSinglePrediction(this, dataset[i]);
         }
         return predictions;
@@ -101,19 +101,19 @@ export default class KNN {
 }
 
 function getSinglePrediction(knn, currentCase) {
-  var nearestPoints = knn.kdTree.nearest(currentCase, knn.k);
-  var pointsPerClass = {};
-  var predictedClass = -1;
-  var maxPoints = -1;
-  var lastElement = nearestPoints[0][0].length - 1;
+  let nearestPoints = knn.kdTree.nearest(currentCase, knn.k);
+  let pointsPerClass = {};
+  let predictedClass = -1;
+  let maxPoints = -1;
+  let lastElement = nearestPoints[0][0].length - 1;
 
-  for (var element of knn.classes) {
+  for (let element of knn.classes) {
     pointsPerClass[element] = 0;
   }
 
-  for (var i = 0; i < nearestPoints.length; ++i) {
-    var currentClass = nearestPoints[i][0][lastElement];
-    var currentPoints = ++pointsPerClass[currentClass];
+  for (let i = 0; i < nearestPoints.length; ++i) {
+    let currentClass = nearestPoints[i][0][lastElement];
+    let currentPoints = ++pointsPerClass[currentClass];
     if (currentPoints > maxPoints) {
       predictedClass = currentClass;
       maxPoints = currentPoints;

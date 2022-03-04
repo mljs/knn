@@ -11,12 +11,14 @@
  * @license MIT License <http://www.opensource.org/licenses/mit-license.php>
  */
 
-function Node(obj, dimension, parent) {
-  this.obj = obj;
-  this.left = null;
-  this.right = null;
-  this.parent = parent;
-  this.dimension = dimension;
+class Node {
+  constructor(obj, dimension, parent) {
+    this.obj = obj;
+    this.left = null;
+    this.right = null;
+    this.parent = parent;
+    this.dimension = dimension;
+  }
 }
 
 export default class KDTree {
@@ -28,7 +30,7 @@ export default class KDTree {
       restoreParent(this.root);
     } else {
       this.dimensions = new Array(points[0].length);
-      for (var i = 0; i < this.dimensions.length; i++) {
+      for (let i = 0; i < this.dimensions.length; i++) {
         this.dimensions[i] = i;
       }
       this.root = buildTree(points, 0, null, this.dimensions);
@@ -47,17 +49,15 @@ export default class KDTree {
   nearest(point, maxNodes, maxDistance) {
     const metric = this.metric;
     const dimensions = this.dimensions;
-    var i;
+    let i;
 
-    const bestNodes = new BinaryHeap(function (e) {
-      return -e[1];
-    });
+    const bestNodes = new BinaryHeap((e) => -e[1]);
 
     function nearestSearch(node) {
       const dimension = dimensions[node.dimension];
       const ownDistance = metric(point, node.obj);
       const linearPoint = {};
-      var bestChild, linearDistance, otherChild, i;
+      let bestChild, linearDistance, otherChild, i;
 
       function saveNode(node, distance) {
         bestNodes.push([node, distance]);
@@ -192,9 +192,9 @@ class BinaryHeap {
 
   pop() {
     // Store the first element so we can return it later.
-    var result = this.content[0];
+    let result = this.content[0];
     // Get the element at the end of the array.
-    var end = this.content.pop();
+    let end = this.content.pop();
     // If there are any elements left, put the end element at the
     // start, and let it sink down.
     if (this.content.length > 0) {
@@ -214,7 +214,7 @@ class BinaryHeap {
 
   bubbleUp(n) {
     // Fetch the element that has to be moved.
-    var element = this.content[n];
+    let element = this.content[n];
     // When at 0, an element can not go up any further.
     while (n > 0) {
       // Compute the parent element's index, and fetch it.
@@ -235,22 +235,23 @@ class BinaryHeap {
 
   sinkDown(n) {
     // Look up the target element and its score.
-    var length = this.content.length;
-    var element = this.content[n];
-    var elemScore = this.scoreFunction(element);
+    const length = this.content.length;
+    const element = this.content[n];
+    const elemScore = this.scoreFunction(element);
 
     while (true) {
+      let child1Score;
       // Compute the indices of the child elements.
-      var child2N = (n + 1) * 2;
-      var child1N = child2N - 1;
+      const child2N = (n + 1) * 2;
+      const child1N = child2N - 1;
       // This is used to store the new position of the element,
       // if any.
-      var swap = null;
+      let swap = null;
       // If the first child exists (is inside the array)...
       if (child1N < length) {
         // Look it up and compute its score.
-        var child1 = this.content[child1N];
-        var child1Score = this.scoreFunction(child1);
+        const child1 = this.content[child1N];
+        child1Score = this.scoreFunction(child1);
         // If the score is less than our element's, we need to swap.
         if (child1Score < elemScore) {
           swap = child1N;
@@ -258,8 +259,8 @@ class BinaryHeap {
       }
       // Do the same checks for the other child.
       if (child2N < length) {
-        var child2 = this.content[child2N];
-        var child2Score = this.scoreFunction(child2);
+        const child2 = this.content[child2N];
+        const child2Score = this.scoreFunction(child2);
         if (child2Score < (swap === null ? elemScore : child1Score)) {
           swap = child2N;
         }

@@ -1,4 +1,4 @@
-import iris from 'ml-dataset-iris';
+import { getNumbers, getClasses } from 'ml-dataset-iris';
 
 import KNN from '..';
 
@@ -9,16 +9,19 @@ describe('knn', () => {
     [1, 1, 0],
     [2, 2, 2],
     [1, 2, 2],
-    [2, 1, 2]
+    [2, 1, 2],
   ];
   const labels = [0, 0, 0, 1, 1, 1];
 
   const knn = new KNN(cases, labels, {
-    k: 3
+    k: 3,
   });
 
   it('predictions', () => {
-    const result = knn.predict([[1.81, 1.81, 1.81], [0.5, 0.5, 0.5]]);
+    const result = knn.predict([
+      [1.81, 1.81, 1.81],
+      [0.5, 0.5, 0.5],
+    ]);
 
     expect(result[0]).toBe(1);
     expect(result[1]).toBe(0);
@@ -38,7 +41,10 @@ describe('knn', () => {
   it('load', () => {
     const model = JSON.parse(JSON.stringify(knn));
     const newKnn = KNN.load(model);
-    const result = newKnn.predict([[1.81, 1.81, 1.81], [0.5, 0.5, 0.5]]);
+    const result = newKnn.predict([
+      [1.81, 1.81, 1.81],
+      [0.5, 0.5, 0.5],
+    ]);
 
     expect(result[0]).toBe(1);
     expect(result[1]).toBe(0);
@@ -49,19 +55,19 @@ describe('knn', () => {
   it('load errors', () => {
     expect(() => KNN.load({})).toThrow('invalid model: undefined');
     expect(() => KNN.load({ name: 'KNN', isEuclidean: true }, () => 1)).toThrow(
-      'the model was created with the default distance function. Do not load it with another one'
+      'the model was created with the default distance function. Do not load it with another one',
     );
     expect(() => KNN.load({ name: 'KNN', isEuclidean: false })).toThrow(
-      'a custom distance function was used to create the model. Please provide it again'
+      'a custom distance function was used to create the model. Please provide it again',
     );
   });
 
   it('Test with iris dataset', () => {
-    var data = iris.getNumbers();
-    var labels = iris.getClasses();
+    let data = getNumbers();
+    let labels = getClasses();
 
-    var knn = new KNN(data, labels, { k: 5 });
-    var test = [
+    let knn = new KNN(data, labels, { k: 5 });
+    let test = [
       [5.1, 3.5, 1.4, 0.2],
       [4.9, 3.0, 1.4, 0.2],
       [4.7, 3.2, 1.3, 0.2],
@@ -76,11 +82,11 @@ describe('knn', () => {
       [6.7, 3.3, 5.7, 2.5],
       [6.7, 3.0, 5.2, 2.3],
       [6.3, 2.5, 5.0, 1.9],
-      [6.5, 3.0, 5.2, 2.0]
+      [6.5, 3.0, 5.2, 2.0],
     ];
 
     knn = KNN.load(JSON.parse(JSON.stringify(knn)));
-    var expected = [
+    let expected = [
       'setosa',
       'setosa',
       'setosa',
@@ -95,7 +101,7 @@ describe('knn', () => {
       'virginica',
       'virginica',
       'virginica',
-      'virginica'
+      'virginica',
     ];
 
     expect(knn.predict(test)).toStrictEqual(expected);
@@ -108,14 +114,14 @@ describe('knn', () => {
       [1, 1, 0],
       [2, 2, 2],
       [1, 2, 2],
-      [2, 1, 2]
+      [2, 1, 2],
     ];
     const predictions = [0, 0, 0, 1, 1, 1];
     const knn = new KNN(dataset, predictions);
 
     expect(knn.k).toBe(3);
 
-    var ans = knn.predict([[0, 0, 0]]);
+    let ans = knn.predict([[0, 0, 0]]);
     expect(ans).toStrictEqual([0]);
   });
 });
