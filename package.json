@@ -12,10 +12,11 @@
     "compile": "rollup -c",
     "eslint": "eslint src",
     "eslint-fix": "npm run eslint -- --fix",
-    "prepublishOnly": "npm run compile",
-    "test": "npm run test-coverage && npm run eslint",
-    "test-only": "jest",
-    "test-coverage": "jest --coverage"
+    "prepack": "npm run compile",
+    "prettier": "prettier --check src",
+    "prettier-write": "prettier --write src",
+    "test": "npm run test-only && npm run eslint && npm run prettier",
+    "test-only": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -34,18 +35,14 @@
     "url": "https://github.com/mljs/knn/issues"
   },
   "homepage": "https://github.com/mljs/knn#readme",
-  "jest": {
-    "testEnvironment": "node"
-  },
   "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
-    "eslint": "^6.0.1",
-    "eslint-config-cheminfo": "^1.20.1",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-jest": "^22.7.1",
-    "jest": "^24.8.0",
-    "ml-dataset-iris": "^1.0.0",
-    "rollup": "^1.16.3"
+    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
+    "eslint": "^8.10.0",
+    "eslint-config-cheminfo": "^7.2.2",
+    "jest": "^27.5.1",
+    "ml-dataset-iris": "^1.2.1",
+    "prettier": "^2.5.1",
+    "rollup": "^2.69.1"
   },
   "dependencies": {
     "ml-distance-euclidean": "^2.0.0"
