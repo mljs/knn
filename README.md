@@ -13,7 +13,7 @@ A General purpose k-nearest neighbor classifier algorithm based on the k-d tree 
 
 ## API
 
-### new KNN(dataset, labels[, options])
+### new KNNClassifier(dataset, labels[, options])
 
 Instantiates the KNN algorithm.
 
@@ -40,7 +40,7 @@ var train_dataset = [
   [2, 1, 2],
 ];
 var train_labels = [0, 0, 0, 1, 1, 1];
-var knn = new KNN(train_dataset, train_labels, { k: 2 }); // consider 2 nearest neighbors
+var knn = new KNNClassifier(train_dataset, train_labels, { k: 2 }); // consider 2 nearest neighbors
 ```
 
 ### predict(newDataset)
@@ -75,14 +75,14 @@ console.log(ans);
 Returns an object representing the model. This function is automatically called if `JSON.stringify(knn)` is used.  
 Be aware that the serialized model takes about 1.3 times the size of the input dataset (it actually is the dataset in a tree structure). Stringification can fail if the resulting string is too large.
 
-### KNN.load(model[, distance])
+### KNNClassifier.load(model[, distance])
 
 Loads a model previously exported by `knn.toJSON()`. If a custom distance function was provided, it must be passed again.
 
 ## External links
 
-Check this cool blog post for a detailed example:
-https://hackernoon.com/machine-learning-with-javascript-part-2-da994c17d483
+Check [this cool blog post](https://hackernoon.com/machine-learning-with-javascript-part-2-da994c17d483) for a detailed example.
+
 
 ## License
 

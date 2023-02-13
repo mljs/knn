@@ -36,15 +36,19 @@
   },
   "homepage": "https://github.com/mljs/knn#readme",
   "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
-    "eslint": "^8.10.0",
-    "eslint-config-cheminfo": "^7.2.2",
-    "jest": "^27.5.1",
+    "@babel/plugin-transform-modules-commonjs": "^7.20.11",
+    "@types/jest": "^29.4.0",
+    "eslint": "^8.34.0",
+    "eslint-config-cheminfo": "^8.1.3",
+    "jest": "^29.4.2",
     "ml-dataset-iris": "^1.2.1",
-    "prettier": "^2.5.1",
-    "rollup": "^2.69.1"
+    "prettier": "^2.8.4",
+    "rollup": "^3.15.0"
   },
   "dependencies": {
     "ml-distance-euclidean": "^2.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
