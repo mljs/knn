@@ -1,6 +1,6 @@
 import { getNumbers, getClasses } from 'ml-dataset-iris';
 
-import KNN from '..';
+import { KNNClassifier } from '../classifier';
 
 describe('knn', () => {
   const cases = [
@@ -13,7 +13,7 @@ describe('knn', () => {
   ];
   const labels = [0, 0, 0, 1, 1, 1];
 
-  const knn = new KNN(cases, labels, {
+  const knn = new KNNClassifier(cases, labels, {
     k: 3,
   });
 
@@ -40,7 +40,7 @@ describe('knn', () => {
 
   it('load', () => {
     const model = JSON.parse(JSON.stringify(knn));
-    const newKnn = KNN.load(model);
+    const newKnn = KNNClassifier.load(model);
     const result = newKnn.predict([
       [1.81, 1.81, 1.81],
       [0.5, 0.5, 0.5],
@@ -53,11 +53,15 @@ describe('knn', () => {
   });
 
   it('load errors', () => {
-    expect(() => KNN.load({})).toThrow('invalid model: undefined');
-    expect(() => KNN.load({ name: 'KNN', isEuclidean: true }, () => 1)).toThrow(
+    expect(() => KNNClassifier.load({})).toThrow('invalid model: undefined');
+    expect(() =>
+      KNNClassifier.load({ name: 'KNNClassifier', isEuclidean: true }, () => 1),
+    ).toThrow(
       'the model was created with the default distance function. Do not load it with another one',
     );
-    expect(() => KNN.load({ name: 'KNN', isEuclidean: false })).toThrow(
+    expect(() =>
+      KNNClassifier.load({ name: 'KNNClassifier', isEuclidean: false }),
+    ).toThrow(
       'a custom distance function was used to create the model. Please provide it again',
     );
   });
@@ -66,7 +70,7 @@ describe('knn', () => {
     let data = getNumbers();
     let labels = getClasses();
 
-    let knn = new KNN(data, labels, { k: 5 });
+    let knn = new KNNClassifier(data, labels, { k: 5 });
     let test = [
       [5.1, 3.5, 1.4, 0.2],
       [4.9, 3.0, 1.4, 0.2],
@@ -85,7 +89,7 @@ describe('knn', () => {
       [6.5, 3.0, 5.2, 2.0],
     ];
 
-    knn = KNN.load(JSON.parse(JSON.stringify(knn)));
+    knn = KNNClassifier.load(JSON.parse(JSON.stringify(knn)));
     let expected = [
       'setosa',
       'setosa',
@@ -117,7 +121,7 @@ describe('knn', () => {
       [2, 1, 2],
     ];
     const predictions = [0, 0, 0, 1, 1, 1];
-    const knn = new KNN(dataset, predictions);
+    const knn = new KNNClassifier(dataset, predictions);
 
     expect(knn.k).toBe(3);
 
